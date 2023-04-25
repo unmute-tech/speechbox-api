@@ -1,0 +1,14 @@
+createMobile:
+INSERT INTO mobile(session_id, created_at, network, box_id, number, duplicate, payment) VALUES (?,?,?,?,?, ?, ?);
+
+getMobilesByNumber:
+SELECT * FROM mobile WHERE number = ?;
+
+getUnpaidMobiles:
+SELECT count(mobile.id) FROM mobile WHERE payment = 0 AND duplicate = 0;
+
+getDuplicateMobiles:
+SELECT count(id) FROM mobile WHERE duplicate = 1;
+
+getMobileById:
+SELECT * FROM mobile WHERE id = ?;

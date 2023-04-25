@@ -1,0 +1,17 @@
+import kotlinx.datetime.Instant;
+import io.reitmaier.speechboxapi.data.BoxId;
+import io.reitmaier.speechboxapi.data.MobileId;
+import io.reitmaier.speechboxapi.data.MobileNumber;
+import io.reitmaier.speechboxapi.data.SessionId;
+
+
+CREATE TABLE IF NOT EXISTS mobile
+(
+    id INT AS MobileId NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    box_id INT AS BoxId NOT NULL REFERENCES box(id),
+    session_id VARCHAR(36) AS SessionId NOT NULL REFERENCES session(id),
+    number VARCHAR(16) AS MobileNumber NOT NULL,
+    network VARCHAR(32) NOT NULL,
+    created_at BIGINT AS Instant NOT NULL
+);
+

@@ -1,0 +1,7 @@
+CREATE VIEW StoriesByBox AS
+SELECT b.*, count(s.box_id) AS num_stories
+FROM box b
+INNER JOIN story s
+ON (b.id = s.box_id AND s.created_at > b.deployed_at)
+GROUP BY
+    b.id;

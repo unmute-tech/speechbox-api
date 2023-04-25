@@ -1,0 +1,6 @@
+import kotlinx.datetime.Instant;
+
+ALTER TABLE session ADD no_token_prompt_state BIGINT AS Instant;
+
+
+

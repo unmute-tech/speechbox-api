@@ -1,0 +1,10 @@
+import kotlinx.datetime.Instant;
+import io.reitmaier.speechboxapi.data.ParticipationToken;
+
+CREATE TABLE IF NOT EXISTS token
+(
+    id VARCHAR(16) AS ParticipationToken NOT NULL PRIMARY KEY,
+    issued_at BIGINT AS Instant,
+    sent_at BIGINT AS Instant,
+    completed_at BIGINT AS Instant
+);

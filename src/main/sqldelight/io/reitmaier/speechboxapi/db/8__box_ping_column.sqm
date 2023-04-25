@@ -1,0 +1,6 @@
+import kotlinx.datetime.Instant;
+
+ALTER TABLE box ADD last_seen BIGINT AS Instant;
+
+
+

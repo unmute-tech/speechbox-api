@@ -1,0 +1,29 @@
+import kotlinx.datetime.Instant;
+import io.reitmaier.speechboxapi.data.BoxId;
+import io.reitmaier.speechboxapi.data.ParticipationToken;
+import io.reitmaier.speechboxapi.data.SessionId;
+import io.reitmaier.speechboxapi.data.StoryId;
+
+
+CREATE TABLE IF NOT EXISTS session
+(
+    id VARCHAR(36) AS SessionId NOT NULL PRIMARY KEY,
+    box_id INT AS BoxId NOT NULL REFERENCES box(id),
+    replay_count INT NOT NULL DEFAULT 0,
+    token VARCHAR(16) AS ParticipationToken REFERENCES token(id),
+    confirmation_answer INT,
+    record_stop_reason VARCHAR(64),
+    recording_length BIGINT,
+
+    idle_state BIGINT AS Instant,
+    welcome_state BIGINT AS Instant,
+    recording_state BIGINT AS Instant,
+    confirmation_state BIGINT AS Instant,
+    questionnaire_share_state BIGINT AS Instant,
+    questionnaire_no_share_state BIGINT AS Instant,
+    token_promt_state BIGINT AS Instant,
+    thank_you_promt_state BIGINT AS Instant
+);
+
+ALTER TABLE story ADD COLUMN session_id VARCHAR(36) AS SessionId NOT NULL REFERENCES session(id);
+

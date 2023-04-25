@@ -1,0 +1,18 @@
+import kotlinx.datetime.Instant;
+import io.reitmaier.speechboxapi.data.BoxId;
+import io.reitmaier.speechboxapi.data.ParticipationToken;
+import io.reitmaier.speechboxapi.data.StoryId;
+
+
+CREATE TABLE IF NOT EXISTS story
+(
+    id INT AS StoryId NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    box_id INT AS BoxId NOT NULL REFERENCES box(id),
+    created_at BIGINT AS Instant NOT NULL,
+    updated_at BIGINT AS Instant NOT NULL,
+    filename VARCHAR(255),
+    token VARCHAR(16) AS ParticipationToken REFERENCES token(id),
+
+    CONSTRAINT path_unique UNIQUE (filename)
+);
+

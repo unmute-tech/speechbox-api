@@ -1,0 +1,3 @@
+ALTER TABLE box DROP timezone;
+ALTER TABLE box ADD timezone VARCHAR(100) NOT NULL DEFAULT 'Africa/Johannesburg';
+

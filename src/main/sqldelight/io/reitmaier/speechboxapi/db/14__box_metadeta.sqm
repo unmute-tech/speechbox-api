@@ -1,0 +1,6 @@
+import kotlinx.datetime.Instant;
+
+
+ALTER TABLE box ADD deployed_at BIGINT AS Instant;
+ALTER TABLE box ADD timezone VARCHAR(100);
+

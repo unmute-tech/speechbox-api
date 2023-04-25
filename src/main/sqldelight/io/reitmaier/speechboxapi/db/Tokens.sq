@@ -1,0 +1,11 @@
+issueToken:
+SELECT * FROM token WHERE issued_at IS NULL LIMIT 1;
+
+markTokenIssued:
+UPDATE token SET issued_at = :issued_at WHERE id = ?;
+
+markTokenSent:
+UPDATE token SET sent_at = :issued_at WHERE id = ?;
+
+markTokenCompleted:
+UPDATE token SET completed_at = :issued_at WHERE id = ?;

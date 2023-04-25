@@ -1,0 +1,8 @@
+getBox:
+SELECT * FROM box WHERE id = ?;
+
+getBoxes:
+SELECT * FROM StoriesByBox ORDER BY id;
+
+setLastSeen:
+UPDATE box SET last_seen = :last_seen WHERE id = ?;

@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+
+  mariadb-speechboxapi:
+    image: mariadb:latest
+    container_name: mariadb-speechboxapi
+    environment:
+      - MYSQL_DATABASE=speechboxdb
+      - MYSQL_USER=speechbox
+      - MYSQL_PASSWORD=speechbox
+      - MYSQL_ROOT_PASSWORD=speechbox
+    networks:
+      - mariadb-speechboxapi-network
+    volumes:
+      - mariadb_transcribe_data:/var/lib/mysql
+    command: --default-storage-engine innodb
+    restart: unless-stopped
+
+  speechboxapi:
+    container_name: speechboxapi
+    image: speechboxapi:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb-speechboxapi
+    volumes:
+    - ./data:/data
+    environment:
+      - DATABASE_HOST=mariadb-speechboxapi
+      - DATABASE_DB=transcribe
+      - DATABASE_USER=transcribe
+      - DATABASE_PASSWORD=transcribe
+      - DATABASE_PORT=3306
+volumes:
+  mariadb_transcribe_data:

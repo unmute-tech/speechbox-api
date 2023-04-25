@@ -1,0 +1,20 @@
+createStory:
+INSERT INTO story(box_id, created_at, updated_at, session_id) VALUES (?,?, ?, ?);
+
+addAudioToStory:
+UPDATE story SET filename = :filename, updated_at = :updated_at WHERE id = ?;
+
+getStory:
+SELECT * FROM story WHERE id = ?;
+
+getLatestStoryByBoxId:
+SELECT * FROM story WHERE box_id = ? ORDER BY updated_at DESC LIMIT 1;
+
+getStoriesByDate:
+SELECT * FROM StoriesByDate;
+
+getStoryBySessionId:
+SELECT * FROM story WHERE session_id = ?;
+
+setToken:
+UPDATE story SET token = :token WHERE id = ?;

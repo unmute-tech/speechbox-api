@@ -1,0 +1,1 @@
+ALTER TABLE mobile ADD duplicate BOOLEAN DEFAULT 0;

@@ -1,0 +1,53 @@
+getSession:
+SELECT * FROM session WHERE id = ?;
+
+insertSession:
+INSERT INTO session(id, box_id) VALUES (?,?);
+
+setIdleState:
+UPDATE session SET idle_state = :idle_state WHERE id = ?;
+
+setNoTokenPromptState:
+UPDATE session SET no_token_prompt_state = :no_token_prompt_state WHERE id = ?;
+
+setAudioErrorState:
+UPDATE session SET audio_error_state = :audio_error_state WHERE id = ?;
+
+setInitState:
+UPDATE session SET init_state = :init_state WHERE id = ?;
+
+increaseReplayCount:
+UPDATE session SET replay_count = replay_count + 1 WHERE id = ?;
+
+setWelcomeState:
+UPDATE session SET welcome_state = :welcome_state WHERE id = ?;
+
+setRecordingState:
+UPDATE session SET recording_state = :recording_state WHERE id = ?;
+
+setConfirmationState:
+UPDATE session SET confirmation_state = :confirmation_state WHERE id = ?;
+
+setConfirmationAnswer:
+UPDATE session SET confirmation_answer = :confirmation_answer WHERE id = ?;
+
+setRecordStopReason:
+UPDATE session SET record_stop_reason = :record_stop_reason WHERE id = ?;
+
+setRecordingLength:
+UPDATE session SET recording_length = :recording_length WHERE id = ?;
+
+setQuestionnaireShareState:
+UPDATE session SET questionnaire_share_state = :questionnaire_share_state WHERE id = ?;
+
+setQuestionnaireNoShareState:
+UPDATE session SET questionnaire_no_share_state = :questionnaire_no_share_state WHERE id = ?;
+
+setTokenPromptState:
+UPDATE session SET token_promt_state = :token_promt_state WHERE id = ?;
+
+setThankYouPromptState:
+UPDATE session SET thank_you_promt_state = :thank_you_promt_state WHERE id = ?;
+
+setToken:
+UPDATE session SET token = :token WHERE id = ?;

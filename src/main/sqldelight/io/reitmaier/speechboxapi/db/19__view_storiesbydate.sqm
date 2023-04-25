@@ -1,0 +1,22 @@
+CREATE VIEW StoriesByDate AS
+SELECT
+ YEAR(from_unixtime(s.created_at/1000)) AS year,
+ MONTH(from_unixtime(s.created_at/1000)) AS month,
+ DAY(from_unixtime(s.created_at/1000)) AS day,
+ count(s.id) AS num_stories
+FROM story s
+INNER JOIN box b
+ON (b.id = s.box_id AND s.created_at > b.deployed_at)
+GROUP BY YEAR(from_unixtime(created_at/1000)), MONTH(from_unixtime(created_at/1000)), DAY(from_unixtime(created_at/1000));
+
+CREATE VIEW StoriesByBoxAndDate AS
+SELECT
+ b.id AS boxId,
+ YEAR(from_unixtime(s.created_at/1000)) AS year,
+ MONTH(from_unixtime(s.created_at/1000)) AS month,
+ DAY(from_unixtime(s.created_at/1000)) AS day,
+ count(s.id) AS num_stories
+FROM story s
+INNER JOIN box b
+ON (b.id = s.box_id AND s.created_at > b.deployed_at)
+GROUP BY b.id, YEAR(from_unixtime(created_at/1000)), MONTH(from_unixtime(created_at/1000)), DAY(from_unixtime(created_at/1000));

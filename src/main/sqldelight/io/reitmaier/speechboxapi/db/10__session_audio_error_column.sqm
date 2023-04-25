@@ -1,0 +1,6 @@
+import kotlinx.datetime.Instant;
+
+ALTER TABLE session ADD audio_error_state BIGINT AS Instant;
+
+
+

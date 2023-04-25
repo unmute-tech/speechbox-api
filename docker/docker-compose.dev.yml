@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+
+  adminer-covidstories:
+    image: adminer
+    container_name: adminer-covidstories
+    restart: always
+    depends_on:
+      - mariadb-covidstories
+    ports:
+      - "8083:8080"
+
+  mariadb-covidstories:
+    image: mariadb:latest
+    container_name: mariadb-covidstories
+    ports:
+      - "3308:3306"
+    environment:
+      # TODO Make these into env variables MYSQL_PASSWORD=${MARIADB_PASSWORD}
+      - MYSQL_DATABASE=speechboxdb
+      - MYSQL_USER=speechbox
+      - MYSQL_PASSWORD=speechbox
+      - MYSQL_ROOT_PASSWORD=speechbox
+    volumes:
+      - mariadb_speechbox_data:/var/lib/mysql
+    command: --default-storage-engine innodb
+    restart: unless-stopped
+
+volumes:
+  mariadb_speechbox_data:

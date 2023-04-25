@@ -1,0 +1,4 @@
+ALTER TABLE box ADD country_code VARCHAR(3) NOT NULL DEFAULT '44';
+
+
+

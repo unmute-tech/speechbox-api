@@ -1,5 +1,5 @@
 * SpeechBox API Server
-The =SpeechBox= API Server is implemented in [[https://kotlinlang.org/][Kotlin]] and runs on the [[https://ktor.io/][ktor]] server framework. The API Server collects data from [[https://github.com/treitmaier/SpeechBox][SpeechBox Appliances]].
+The =SpeechBox= API Server is implemented in [[https://kotlinlang.org/][Kotlin]] and runs on the [[https://ktor.io/][ktor]] server framework. The API Server collects data from [[https://github.com/unmute-tech/speechbox][SpeechBox Appliances]].
 
 ** Setup
 The [[build.gradle.kts][build.gradle.kts]] file contains build configurations to build, both a fat JAR of the API server as well as a dockerized version of the application.
